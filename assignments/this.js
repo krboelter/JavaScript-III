@@ -46,4 +46,9 @@ ken.speak();
 
 // Principle 4
 
-// code example for Explicit Binding
+const newPerson = {
+    name: 'Delaney',
+    lastName: 'Boelter'
+}
+
+ken.speak.call(newPerson);
