@@ -35,8 +35,6 @@ function CharacterStats (stats) {
 CharacterStats.prototype = Object.create (GameObject.prototype);
 CharacterStats.prototype.takeDamage = function () {
   console.log(`${this.name} took damage.`);
-  // this.healthPoints -= 5;
-  // console.log(this.healthPoints);
 }
 
 
@@ -71,19 +69,22 @@ Humanoid.prototype.greet = function () {
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
 
 //===Hero===
-// function Hero (heroAtt) {
-//   Humanoid.call(this, heroAtt);
-// }
+function Hero (heroAtt) {
+  Humanoid.call(this, heroAtt);
+}
 
-//Hero.prototype = Object.create(Humanoid.prototype);
+Hero.prototype = Object.create(Humanoid.prototype);
+Hero.prototype.shieldBash = function () {
+  redSkull.healthPoints -= 5;
+}
 
 
 //===Villan===
-// function Villan (villAtt) {
-//   Humanoid.call(this. villAtt)
-// }
+function Villan (villAtt) {
+  Humanoid.call(this, villAtt)
+}
 
-//Villan.prototype = Object.create(Humanoid.prototype);
+Villan.prototype = Object.create(Humanoid.prototype);
 
  
 /*
@@ -145,38 +146,38 @@ const archer = new Humanoid({
   language: 'Elvish',
 });
 
-// const cptAmerica = new Hero({
-//   createdAt: new Date(),
-//   dimensions: {
-//     length: 1,
-//     width: 2,
-//     height: 6,
-//   },
-//   healthPoints: 15,
-//   name: 'Captain America',
-//   team: 'America',
-//   weapons: [
-//     'shield',
-//     'Super Strength Drugs',
-//   ],
-//   language: 'English'
-// });
+const cptAmerica = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 2,
+    height: 6,
+  },
+  healthPoints: 15,
+  name: 'Captain America',
+  team: 'America',
+  weapons: [
+    'shield',
+    'Super Strength Drugs',
+  ],
+  language: 'English'
+});
 
-// const redSkull = new Villan({
-//   createdAt: new Date(),
-//   dimensions: {
-//     length: 1,
-//     width: 1.5,
-//     height: 5,
-//   },
-//   healthPoints: 5,
-//   name: 'Red Skull',
-//   team: 'Hydra',
-//   weapons: [
-//     'gun'
-//   ],
-//   language: 'German'
-// });
+const redSkull = new Villan({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 1.5,
+    height: 5,
+  },
+  healthPoints: 5,
+  name: 'Red Skull',
+  team: 'Hydra',
+  weapons: [
+    'gun'
+  ],
+  language: 'German'
+});
 
 console.log(mage.createdAt); // Today's date
 console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
@@ -188,6 +189,8 @@ console.log(archer.language); // Elvish
 console.log(archer.greet()); // Lilith offers a greeting in Elvish.
 console.log(mage.takeDamage()); // Bruce took damage.
 console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-// console.log(redSkull.greet())
+console.log(redSkull.greet());
+console.log(cptAmerica.shieldBash());
+console.log(redSkull.healthPoints);
 
 
